@@ -14,8 +14,7 @@
     "include": [
       "assets",
       "components",
-      "pages",
-      "styles"
+      "pages"
     ],
     "exclude": [],
     "entrypoints": []
@@ -31,8 +30,12 @@
     "@mantine/hooks": "^5.4.2",
     "@mantine/next": "^5.4.2",
     "@tabler/icons": "^1.105.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
     "babel-plugin-styled-components": "^2.0.7",
     "embla-carousel-react": "^7.0.3",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-promise": "^6.1.1",
     "graphql": "^16.6.0",
     "graphql-language-service-parser": "^1.10.4",
     "graphql-request": "^5.0.0",

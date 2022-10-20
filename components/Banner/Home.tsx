@@ -156,18 +156,13 @@ export default function Banner({ value }: { value: Immobile[] }) {
                   size="sm"
                   placeholder="O que você procura?"
                   data={data}
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                      router.push(
-                        `/venda/imovel/${stringfy(e.currentTarget.value)}`
-                      )
-                    }
+                  onItemSubmit={(e) => {
+                    router.push(`/venda/imovel/${stringfy(e.value)}`)
                   }}
                 />
               </Tooltip>
             </ContainerSearch>
           </ContainerInfos>
-
           <ContainerImage>
             <ImageCont src="/images/sunset-farm.webp" alt="sunset" />
           </ContainerImage>

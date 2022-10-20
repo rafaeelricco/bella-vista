@@ -3,6 +3,7 @@ import { Informacoes } from '../typings'
 import { GraphQLClient } from 'graphql-request'
 import { Form } from '../components/Form/Form'
 import { Container } from '@mantine/core'
+import { useRouter } from 'next/router'
 import Header from '../components/Header/Header'
 
 export async function getServerSideProps() {
@@ -36,7 +37,7 @@ export default function Contact({
     <>
       <Header />
       <Container size="lg">
-        <Form />
+        <Form obj={'Página de contato'} />
       </Container>
       <Footer data={informacoes} />
     </>

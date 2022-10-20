@@ -195,7 +195,6 @@ export default function Imovel({
   const immobile = immobiles.find((immobile) => {
     return stringfy(immobile.name) == slug
   })
-
   const related = immobiles.filter((i) => {
     return i.category == immobile?.category
   })
@@ -244,7 +243,7 @@ export default function Imovel({
               </BadgeContainer>
             </Title>
             <Adress>
-              <Location width={14} />
+              <Location fill="#F6B72A" width={14} />
               <Detail>
                 {immobile.location} - {immobile.reference_point}
               </Detail>
@@ -370,7 +369,7 @@ export default function Imovel({
           </>
         )}
         <FormContainer>
-          <Form />
+          {immobile && <Form key={immobile.id} obj={immobile.name} />}
         </FormContainer>
       </Container>
       <Properties
@@ -412,7 +411,7 @@ export default function Imovel({
             }
           }}
           loop
-          height={600}
+          height={500}
           align="start"
         >
           {related?.map((r) => (

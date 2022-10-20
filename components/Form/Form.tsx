@@ -28,16 +28,18 @@ const FormContainer = styled.form`
   grid-gap: 0.618rem;
 `
 
-export function Form() {
-  const [sucess, setSucess] = useState(false)
+export function Form({ obj }) {
+  const immobile = obj
   const form = useRef()
-  // const product = product_req
+  const [sucess, setSucess] = useState(false)
+
   const [formValue, setFormValue] = React.useState({
     accept_contact: true,
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    product: `${immobile}`
   })
 
   const formBodyValue = new FormData()
@@ -58,8 +60,6 @@ export function Form() {
       .then((res) => {
         if (res.status == 200) {
           setSucess(true)
-        } else {
-          console.table(res)
         }
       })
   }
@@ -75,8 +75,6 @@ export function Form() {
     e.preventDefault()
     sendEmail()
   }
-
-  console.table(formValue)
 
   return (
     <>
@@ -121,11 +119,12 @@ export function Form() {
             size="xs"
             label="Aceito receber contato via telefone ou e-mail."
           />
+          <input type="hidden" name="product" value={formValue.product} />
           <Notification
             hidden={!sucess}
             onClose={() => setSucess(false)}
             icon={<IconCheck size={20} />}
-            color="yellow"
+            color="green"
             radius="lg"
             title="Mensagem enviada com sucesso!"
           >

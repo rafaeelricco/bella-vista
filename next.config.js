@@ -17,6 +17,11 @@ const nextConfig = {
   i18n: {
     locales: ['en-US', 'pt-BR'],
     defaultLocale: 'pt-BR'
+  },
+  compiler: {
+    removeConsole: {
+      exclude: ['error']
+    }
   }
 }
 
