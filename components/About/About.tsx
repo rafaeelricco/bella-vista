@@ -48,7 +48,6 @@ const MissaoVisaoValores = styled.div`
   justify-content: center;
   gap: 1.218rem;
 `
-
 const Card = styled.div`
   display: grid;
   justify-items: center;
@@ -87,7 +86,6 @@ const Card = styled.div`
     font-weight: bold;
   }
 `
-
 const Anajara = styled.div`
   display: grid;
   justify-content: center;
@@ -129,7 +127,6 @@ const ContainerAnaj = styled.div`
     flex-direction: column;
   }
 `
-
 const TextAnaj = styled.div`
   h1 {
     margin: 0 0 -0.818rem 0;

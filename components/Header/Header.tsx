@@ -79,12 +79,14 @@ export default function Header() {
       <Container size={'lg'}>
         <HeaderContainer>
           <Link href={'/'}>
-            <Logo
-              style={{
-                cursor: 'pointer'
-              }}
-              width={180}
-            />
+            <a>
+              <Logo
+                style={{
+                  cursor: 'pointer'
+                }}
+                width={180}
+              />
+            </a>
           </Link>
           <Inicio>
             <ActiveLink name={'Início'} key={'inicio'} href={'/'} />

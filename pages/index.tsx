@@ -4,12 +4,34 @@ import { Carousel } from '@mantine/carousel'
 import { Immobile, Informacoes } from '../typings'
 import { stringfy } from '../utils/stringfy'
 import { Footer } from '../components/Footer/Footer'
-import About from '../components/About/About'
 import Banner from '../components/Banner/Home'
 import Header from '../components/Header/Header'
-import Maps from '../components/Maps/Maps'
 import Properties from '../components/Properties/Properties'
 import CardHome from '../components/Cards/Home'
+import dynamic from 'next/dynamic'
+
+const DynamicMaps = dynamic(() => import('../components/Maps/Maps'), {
+  loading: () => <p>Carregando...</p>,
+  suspense: true
+})
+
+const DynamicAbout = dynamic(() => import('../components/About/About'), {
+  ssr: true,
+  loading: () => <p>Carregando...</p>,
+  suspense: true
+})
+
+const DynamicBanner = dynamic(() => import('../components/Banner/Home'), {
+  ssr: true
+})
+
+const DynamicProperties = dynamic(
+  () => import('../components/Properties/Properties'),
+  {
+    ssr: true,
+    suspense: true
+  }
+)
 
 export async function getServerSideProps({ req, res }) {
   res.setHeader(
@@ -83,8 +105,8 @@ export default function Index({
   return (
     <>
       <Header />
-      <Banner value={immobiles} />
-      <Properties
+      <DynamicBanner value={immobiles} />
+      <DynamicProperties
         title={'Principais imóveis'}
         description={
           'Oferecemos uma vasta variedade em imóveis urbanos e propriedades rurais para a venda, além de facilidade para negociação e arrendamentos de terras.'
@@ -143,8 +165,8 @@ export default function Index({
           ))}
         </Carousel>
       </ContainerCardHome>
-      <About />
-      <Maps />
+      <DynamicAbout />
+      <DynamicMaps />
       <Footer data={informacoes} />
     </>
   )

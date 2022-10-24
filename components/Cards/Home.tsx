@@ -14,7 +14,7 @@ import { conditional } from '../../utils/conditional-render'
 import { CardProps } from '../../typings'
 import Image from 'next/image'
 
-export const CardContainer = styled.div`
+const CardContainer = styled.div`
   display: grid;
   grid-auto-flow: dense;
   grid-template-columns: 1fr;
@@ -37,7 +37,7 @@ export const CardContainer = styled.div`
 const TitleCard = styled.h1`
   font-size: 1.618rem;
   color: rgba(48, 91, 30, 0.8);
-  margin: -0.318rem 0 0 0;
+  margin: -1rem 0 0 0;
   transition: all 0.3s ease-out;
 `
 const LayoutDetails = styled.div`
@@ -124,7 +124,7 @@ export default function CardHome({
         <CardContainer>
           <Image
             className="image-card"
-            quality={50}
+            quality={30}
             width={324}
             height={232}
             src={img}

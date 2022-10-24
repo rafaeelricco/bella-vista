@@ -28,6 +28,10 @@ const CardContainer = styled.div`
   cursor: pointer;
   &:hover {
     scale: 1.05;
+    transition: all 0.3s ease-out;
+    -webkit-box-shadow: 12px 32px 32px -16px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 12px 32px 32px -16px rgba(0, 0, 0, 0.08);
+    box-shadow: 12px 32px 32px -16px rgba(0, 0, 0, 0.08);
   }
   @media (max-width: 1080px) {
     width: 100%;

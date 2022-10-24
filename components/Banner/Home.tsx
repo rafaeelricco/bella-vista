@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import styled from 'styled-components'
 import { Autocomplete, Container, Tooltip } from '@mantine/core'
 import { Search } from 'tabler-icons-react'
 import { useRouter } from 'next/router'
 import { stringfy } from '../../utils/stringfy'
 import { Immobile } from '../../typings'
+import styled from 'styled-components'
+import dynamic from 'next/dynamic'
 
 const Title = styled.h1`
   z-index: 1;
@@ -81,8 +82,6 @@ const ContainerBanner = styled.div`
   justify-content: center;
   margin: 1rem 0 0 0;
 `
-const ContainerItems = styled.div``
-
 const ContainerSearch = styled.div`
   display: grid;
   transition: all 0.3s ease-out;
@@ -96,8 +95,6 @@ const ContainerSearch = styled.div`
     grid-template-columns: 80vw;
   }
 `
-const image = styled.img``
-
 const ImageCont = styled.img`
   width: 100%;
   height: 425px;
