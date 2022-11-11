@@ -19,13 +19,8 @@ function ActiveLink({ href, name }: Props) {
     fontWeight: router.asPath === href ? 'bold' : 'normal'
   }
 
-  const handleClick = (e: any) => {
-    e.preventDefault()
-    router.push(href)
-  }
-
   return (
-    <Anchor href={href} onClick={handleClick} style={style}>
+    <Anchor href={href} style={style}>
       {name}
     </Anchor>
   )

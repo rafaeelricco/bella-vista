@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
+import { Carousel } from '@mantine/carousel'
 import {
   Badge,
   Button,
@@ -8,30 +9,30 @@ import {
   Tabs,
   TypographyStylesProvider
 } from '@mantine/core'
-import { Immobile, Informacoes } from '../../../typings'
-import { Carousel } from '@mantine/carousel'
-import { Footer } from '../../../components/Footer/Footer'
-import { useRouter } from 'next/router'
 import { GraphQLClient } from 'graphql-request'
-import { ContainerCard } from '../../../assets/styled/Card'
-import {
-  Area,
-  Bedroom,
-  Bathroom,
-  Location,
-  Garage,
-  Whatsapp,
-  Suit,
-  Commercial,
-  Parking
-} from '../../../utils/icons'
-import { conditional } from '../../../utils/conditional-render'
-import { stringfy } from '../../../utils/stringfy'
-import { Form } from '../../../components/Form/Form'
-import CardHome from '../../../components/Cards/Home'
+import { useRouter } from 'next/router'
+import Script from 'next/script'
 import styled from 'styled-components'
+import { ContainerCard } from '../../../assets/styled/Card'
+import CardHome from '../../../components/Cards/Home'
+import { Footer } from '../../../components/Footer/Footer'
+import { Form } from '../../../components/Form/Form'
 import Header from '../../../components/Header/Header'
 import Properties from '../../../components/Properties/Properties'
+import { Immobile, Informacoes } from '../../../typings'
+import { conditional } from '../../../utils/conditional-render'
+import {
+  Area,
+  Bathroom,
+  Bedroom,
+  Commercial,
+  Garage,
+  Location,
+  Parking,
+  Suit,
+  Whatsapp
+} from '../../../utils/icons'
+import { stringfy } from '../../../utils/stringfy'
 
 export async function getServerSideProps({ req, res }) {
   res.setHeader(
@@ -192,6 +193,13 @@ export default function Imovel({
 }) {
   const router = useRouter()
   const { slug } = router.query
+
+  const immobileFbPixel =
+    slug.toString().replace(/-/g, ' ').charAt(0).toUpperCase() +
+    slug.toString().replace(/-/g, ' ').slice(1)
+
+  console.log(immobileFbPixel)
+
   const immobile = immobiles.find((immobile) => {
     return stringfy(immobile.name) == slug
   })
@@ -216,8 +224,7 @@ export default function Imovel({
             { maxWidth: 'sm', slideSize: '100%' }
           ]}
           loop
-          align="center"
-        >
+          align="center">
           {immobile?.images.map((img: Immobile) => (
             <Carousel.Slide key={img.id}>
               <img
@@ -252,14 +259,12 @@ export default function Imovel({
               <a
                 href="https://api.whatsapp.com/send?phone=5551996966086"
                 target={'_blank'}
-                rel="noreferrer"
-              >
+                rel="noreferrer">
                 <Button
                   variant="light"
                   color={'green'}
                   radius={'md'}
-                  leftIcon={<Whatsapp fill="#40c057" width={19} />}
-                >
+                  leftIcon={<Whatsapp fill="#40c057" width={19} />}>
                   Consultar valores
                 </Button>
               </a>
@@ -273,8 +278,7 @@ export default function Imovel({
                       fontWeight: 'bold',
                       color: '#305b1e'
                     }}
-                    value="description"
-                  >
+                    value="description">
                     Descrição
                   </Tabs.Tab>
                 </Tabs.List>
@@ -284,8 +288,7 @@ export default function Imovel({
                       fontSize: '1rem',
                       color: '#305b1e',
                       margin: '-0.218rem 0 2rem 0'
-                    }}
-                  >
+                    }}>
                     <div
                       dangerouslySetInnerHTML={{
                         __html: immobile.description.html
@@ -300,8 +303,7 @@ export default function Imovel({
               <IconFicha
                 style={{
                   display: conditional(immobile.garage)
-                }}
-              >
+                }}>
                 <Garage width={23} />
                 <p>{immobile.garage} Garagem</p>
               </IconFicha>
@@ -309,8 +311,7 @@ export default function Imovel({
               <IconFicha
                 style={{
                   display: conditional(immobile.bedrooms)
-                }}
-              >
+                }}>
                 <Divider orientation="vertical" />
                 <Bedroom width={24} />
                 <p>{immobile.bedrooms} Quartos</p>
@@ -319,8 +320,7 @@ export default function Imovel({
               <IconFicha
                 style={{
                   display: conditional(immobile.bathrooms)
-                }}
-              >
+                }}>
                 <Divider orientation="vertical" />
                 <Bathroom width={24} />
                 <p>{immobile.bathrooms} Banheiros</p>
@@ -329,8 +329,7 @@ export default function Imovel({
               <IconFicha
                 style={{
                   display: conditional(immobile.size_area)
-                }}
-              >
+                }}>
                 <Divider orientation="vertical" />
                 <Area width={24} />
                 <p>{immobile.size_area}</p>
@@ -339,8 +338,7 @@ export default function Imovel({
               <IconFicha
                 style={{
                   display: conditional(immobile.suits)
-                }}
-              >
+                }}>
                 <Divider orientation="vertical" />
                 <Suit fill={'#F6B72A'} width={24} />
                 <p>{immobile.suits} Suíte</p>
@@ -349,8 +347,7 @@ export default function Imovel({
               <IconFicha
                 style={{
                   display: conditional(immobile.commercial_room)
-                }}
-              >
+                }}>
                 <Divider orientation="vertical" />
                 <Commercial fill={'#F6B72A'} width={24} />
                 <p>{immobile.commercial_room} Salas comerciais</p>
@@ -359,8 +356,7 @@ export default function Imovel({
               <IconFicha
                 style={{
                   display: conditional(immobile.parking)
-                }}
-              >
+                }}>
                 <Divider orientation="vertical" />
                 <Parking fill={'#F6B72A'} width={24} />
                 <p>{immobile.parking} Vagas de Estc</p>
@@ -412,8 +408,7 @@ export default function Imovel({
           }}
           loop
           height={500}
-          align="start"
-        >
+          align="start">
           {related?.map((r) => (
             <Carousel.Slide key={r.id}>
               <ContainerCard>
@@ -438,6 +433,25 @@ export default function Imovel({
         </Carousel>
       </Related>
       <Footer data={informacoes} />
+      <Script
+        id="fb-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', ${process.env.NEXT_PUBLIC_PIXEL_ID});
+          fbq('track', 'PageView');
+          fbq('trackCustom', '${immobileFbPixel}');
+          `
+        }}
+      />
     </>
   )
 }

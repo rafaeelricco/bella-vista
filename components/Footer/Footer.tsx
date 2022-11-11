@@ -1,13 +1,13 @@
-import { createStyles, Text, Group, Container } from '@mantine/core'
-import { Informacoes } from '../../typings'
+import { Container, createStyles, Group, Text } from '@mantine/core'
 import styled from 'styled-components'
-import Phone from '../../assets/icons/phone.svg'
-import Gmail from '../../assets/icons/gmail-yellow.svg'
-import Logo from '../../assets/icons/logo-horizontal(branco).svg'
 import Facebook from '../../assets/icons/facebook.svg'
+import Gmail from '../../assets/icons/gmail-yellow.svg'
 import Instagram from '../../assets/icons/instagram.svg'
-import WhatsApp from '../../assets/icons/whatsapp.svg'
 import Location from '../../assets/icons/localizacao.svg'
+import Logo from '../../assets/icons/logo-horizontal(branco).svg'
+import Phone from '../../assets/icons/phone.svg'
+import WhatsApp from '../../assets/icons/whatsapp.svg'
+import { Informacoes } from '../../typings'
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -181,8 +181,7 @@ export function Footer({ data }: { data: Informacoes[] }) {
                 rel="noreferrer"
                 style={{
                   textDecoration: 'none'
-                }}
-              >
+                }}>
                 <Text className={classes.link}>
                   {data?.map((item) => item.location)}
                 </Text>
@@ -201,8 +200,7 @@ export function Footer({ data }: { data: Informacoes[] }) {
                 }}
                 href={`tel:${data?.map((item) => item.phone)}`}
                 target={'_blank'}
-                rel="noreferrer"
-              >
+                rel="noreferrer">
                 <Text className={classes.link}>
                   {data?.map((item) => item.phone)}
                 </Text>
@@ -222,8 +220,7 @@ export function Footer({ data }: { data: Informacoes[] }) {
                 }}
                 href={`mailto:${data?.map((item) => item.gmail)}`}
                 target={'_blank'}
-                rel="noreferrer"
-              >
+                rel="noreferrer">
                 <Text className={classes.link}>
                   {data?.map((item) => item.gmail)}
                 </Text>
@@ -235,15 +232,13 @@ export function Footer({ data }: { data: Informacoes[] }) {
           <a
             href={`${data?.map((item) => item.facebook)}`}
             target={'_blank'}
-            rel="noreferrer"
-          >
+            rel="noreferrer">
             {<Facebook color="#fff" size={25} stroke={'1.5'} />}
           </a>
           <a
             href={`${data?.map((item) => item.instagram)}`}
             target={'_blank'}
-            rel="noreferrer"
-          >
+            rel="noreferrer">
             <Instagram color="#fff" size={24} stroke={'1.5'} />
           </a>
           <a
@@ -251,8 +246,7 @@ export function Footer({ data }: { data: Informacoes[] }) {
               (item) => item.whatsApp
             )}`}
             target={'_blank'}
-            rel="noreferrer"
-          >
+            rel="noreferrer">
             <WhatsApp width={27} fill="#F6B72A" stroke={'1.5'} />
           </a>
         </Group>

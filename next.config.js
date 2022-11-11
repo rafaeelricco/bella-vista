@@ -19,9 +19,7 @@ const nextConfig = {
     defaultLocale: 'pt-BR'
   },
   compiler: {
-    removeConsole: {
-      exclude: ['error']
-    }
+    styledComponents: true
   }
 }
 

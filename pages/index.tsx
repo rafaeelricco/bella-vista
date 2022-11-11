@@ -1,14 +1,13 @@
-import { GraphQLClient } from 'graphql-request'
-import { ContainerCard, ContainerCardHome } from '../assets/styled/Card'
 import { Carousel } from '@mantine/carousel'
+import { GraphQLClient } from 'graphql-request'
+import dynamic from 'next/dynamic'
+import Script from 'next/script'
+import { ContainerCard, ContainerCardHome } from '../assets/styled/Card'
+import CardHome from '../components/Cards/Home'
+import { Footer } from '../components/Footer/Footer'
+import Header from '../components/Header/Header'
 import { Immobile, Informacoes } from '../typings'
 import { stringfy } from '../utils/stringfy'
-import { Footer } from '../components/Footer/Footer'
-import Banner from '../components/Banner/Home'
-import Header from '../components/Header/Header'
-import Properties from '../components/Properties/Properties'
-import CardHome from '../components/Cards/Home'
-import dynamic from 'next/dynamic'
 
 const DynamicMaps = dynamic(() => import('../components/Maps/Maps'), {
   loading: () => <p>Carregando...</p>,
@@ -140,8 +139,7 @@ export default function Index({
           }}
           loop
           height={500}
-          align="start"
-        >
+          align="start">
           {immobiles.map((immobile) => (
             <Carousel.Slide key={immobile.id}>
               <ContainerCard>
@@ -168,6 +166,25 @@ export default function Index({
       <DynamicAbout />
       <DynamicMaps />
       <Footer data={informacoes} />
+      <Script
+        id="fb-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', ${process.env.NEXT_PUBLIC_PIXEL_ID});
+          fbq('track', 'PageView');
+          fbq('trackCustom', 'Página inicial');
+          `
+        }}
+      />
     </>
   )
 }

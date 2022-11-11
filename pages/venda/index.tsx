@@ -1,14 +1,15 @@
-import { Footer } from '../../components/Footer/Footer'
 import { Container, Select, TextInput } from '@mantine/core'
-import { useState } from 'react'
+import { IconSearch } from '@tabler/icons'
 import { GraphQLClient } from 'graphql-request'
 import { useRouter } from 'next/router'
-import { Immobile, Informacoes } from '../../typings'
-import { stringfy } from '../../utils/stringfy'
-import { IconSearch } from '@tabler/icons'
-import Header from '../../components/Header/Header'
+import Script from 'next/script'
+import { useState } from 'react'
 import styled from 'styled-components'
 import Card from '../../components/Cards/Venda'
+import { Footer } from '../../components/Footer/Footer'
+import Header from '../../components/Header/Header'
+import { Immobile, Informacoes } from '../../typings'
+import { stringfy } from '../../utils/stringfy'
 
 export async function getServerSideProps({ req, res }) {
   res.setHeader(
@@ -89,8 +90,7 @@ const Layout = styled.div`
   margin: 2rem 0;
 `
 const Cards = styled.div`
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
   justify-content: center;
   width: 100%;
   gap: 1rem;
@@ -307,6 +307,25 @@ export default function Venda({
         </Layout>
       </Container>
       <Footer data={informacoes} />
+      <Script
+        id="fb-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', ${process.env.NEXT_PUBLIC_PIXEL_ID});
+          fbq('track', 'PageView');
+          fbq('trackCustom', 'Venda');
+          `
+        }}
+      />
     </>
   )
 }

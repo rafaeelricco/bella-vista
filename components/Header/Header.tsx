@@ -6,17 +6,17 @@ import {
   Group,
   useMantineTheme
 } from '@mantine/core'
-import { useState } from 'react'
 import Link from 'next/link'
-import ActiveLink from './LinkState'
+import { useState } from 'react'
 import styled from 'styled-components'
-import Logo from '../../assets/icons/logo-simplificado.svg'
-import WhatsApp from '../../assets/icons/whatsapp.svg'
+import Sale from '../../assets/icons/comprar-casa.svg'
+import ContatForm from '../../assets/icons/enviar.svg'
 import Home from '../../assets/icons/inicio.svg'
 import Local from '../../assets/icons/localizacao.svg'
-import Sale from '../../assets/icons/comprar-casa.svg'
+import Logo from '../../assets/icons/logo-simplificado.svg'
 import About from '../../assets/icons/sobre.svg'
-import ContatForm from '../../assets/icons/enviar.svg'
+import WhatsApp from '../../assets/icons/whatsapp.svg'
+import ActiveLink from './LinkState'
 
 const HeaderContainer = styled.div`
   display: grid;
@@ -78,16 +78,14 @@ export default function Header() {
     <>
       <Container size={'lg'}>
         <HeaderContainer>
-          <Link href={'/'}>
-            <a>
-              <Logo
-                style={{
-                  cursor: 'pointer'
-                }}
-                width={180}
-              />
-            </a>
-          </Link>
+          <a href={'/'}>
+            <Logo
+              style={{
+                cursor: 'pointer'
+              }}
+              width={180}
+            />
+          </a>
           <Inicio>
             <ActiveLink name={'Início'} key={'inicio'} href={'/'} />
           </Inicio>
@@ -123,8 +121,7 @@ export default function Header() {
                   transition: 'all 0.3s ease-out'
                 }
               }
-            })}
-          >
+            })}>
             Entre em contato
           </Button>
           <Hamburguer>
@@ -139,8 +136,7 @@ export default function Header() {
               onClose={() => setOpened(false)}
               padding={theme.spacing.md * 1.6}
               size="sm"
-              position="right"
-            >
+              position="right">
               <Group spacing="xs">
                 <Home
                   width={22}
@@ -154,8 +150,7 @@ export default function Header() {
                     style={{
                       textDecoration: 'none',
                       cursor: 'pointer'
-                    }}
-                  >
+                    }}>
                     <TitleMenu>Início</TitleMenu>
                   </a>
                 </Link>
@@ -168,8 +163,7 @@ export default function Header() {
                   rel="noreferrer"
                   style={{
                     textDecoration: 'none'
-                  }}
-                >
+                  }}>
                   <TitleMenu>Localização</TitleMenu>
                 </a>
               </Group>
@@ -180,8 +174,7 @@ export default function Header() {
                     style={{
                       cursor: 'pointer',
                       textDecoration: 'none'
-                    }}
-                  >
+                    }}>
                     <TitleMenu>Venda</TitleMenu>
                   </a>
                 </Link>
@@ -194,8 +187,7 @@ export default function Header() {
                   rel="noreferrer"
                   style={{
                     textDecoration: 'none'
-                  }}
-                >
+                  }}>
                   <TitleMenu>Fale comigo</TitleMenu>
                 </a>
               </Group>
@@ -212,14 +204,12 @@ export default function Header() {
                     cursor: 'pointer'
                   }}
                   href={'/sobre'}
-                  prefetch={true}
-                >
+                  prefetch={true}>
                   <a
                     style={{
                       cursor: 'pointer',
                       textDecoration: 'none'
-                    }}
-                  >
+                    }}>
                     <TitleMenu>Sobre</TitleMenu>
                   </a>
                 </Link>

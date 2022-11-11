@@ -1,15 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import styled from 'styled-components'
+import { CardProps } from '../../typings'
+import { conditional } from '../../utils/conditional-render'
 import Area from '/assets/icons/area.svg'
-import Bedroom from '/assets/icons/dormitorios.svg'
 import Bathroom from '/assets/icons/banheiros.svg'
-import Suit from '/assets/icons/suite.svg'
-import Commercial from '/assets/icons/sala-comercial.svg'
+import Bedroom from '/assets/icons/dormitorios.svg'
 import Garage from '/assets/icons/garagem.svg'
 import Parking from '/assets/icons/parking.svg'
-import Link from 'next/link'
-import { conditional } from '../../utils/conditional-render'
-import { CardProps } from '../../typings'
+import Commercial from '/assets/icons/sala-comercial.svg'
+import Suit from '/assets/icons/suite.svg'
 
 const widthCard = '100%'
 
@@ -147,7 +146,7 @@ export default function Card({
 }: CardProps) {
   return (
     <>
-      <Link href={link}>
+      <a href={link}>
         <CardContainer>
           <ImageCard src={img} alt={alt} />
           <DetailsCard>
@@ -159,8 +158,7 @@ export default function Card({
               <DetailContainer
                 style={{
                   display: conditional(area)
-                }}
-              >
+                }}>
                 <Area width={16} />
                 <Detail>{area}</Detail>
               </DetailContainer>
@@ -168,8 +166,7 @@ export default function Card({
               <DetailContainer
                 style={{
                   display: conditional(bedrooms)
-                }}
-              >
+                }}>
                 <Bedroom width={16} />
                 <Detail>{bedrooms}</Detail>
               </DetailContainer>
@@ -177,8 +174,7 @@ export default function Card({
               <DetailContainer
                 style={{
                   display: conditional(bathrooms)
-                }}
-              >
+                }}>
                 <Bathroom width={16} />
                 <Detail>{bathrooms}</Detail>
               </DetailContainer>
@@ -186,8 +182,7 @@ export default function Card({
               <DetailContainer
                 style={{
                   display: conditional(garage)
-                }}
-              >
+                }}>
                 <Garage fill={'#F6B72A'} width={15} />
                 <Detail>{garage}</Detail>
               </DetailContainer>
@@ -195,8 +190,7 @@ export default function Card({
               <DetailContainer
                 style={{
                   display: conditional(suit)
-                }}
-              >
+                }}>
                 <Suit fill={'#F6B72A'} width={16} />
                 <Detail>{suit}</Detail>
               </DetailContainer>
@@ -204,8 +198,7 @@ export default function Card({
               <DetailContainer
                 style={{
                   display: conditional(commercial)
-                }}
-              >
+                }}>
                 <Commercial fill={'#F6B72A'} width={16} />
                 <Detail>{commercial}</Detail>
               </DetailContainer>
@@ -213,15 +206,14 @@ export default function Card({
               <DetailContainer
                 style={{
                   display: conditional(parking)
-                }}
-              >
+                }}>
                 <Parking fill={'#F6B72A'} width={16} />
                 <Detail>{parking}</Detail>
               </DetailContainer>
             </LayoutDetails>
           </DetailsCard>
         </CardContainer>
-      </Link>
+      </a>
     </>
   )
 }
